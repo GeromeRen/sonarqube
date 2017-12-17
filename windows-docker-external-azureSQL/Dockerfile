@@ -19,7 +19,7 @@ RUN powershell -command \
 
     Rename-Item sonarqube-$env:SONARQUBE_VERSION sonarqube ; \
 
-    Rename-Item c:\sonarqube\extensions c:\sonarqube\original_extensions
+    Rename-Item c:\sonarqube\extensions c:\sonarqube\original_extensions ;
 
 VOLUME c:\\sonarqube\\extentions
 
