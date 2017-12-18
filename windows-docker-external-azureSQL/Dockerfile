@@ -4,7 +4,7 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 
 RUN \
     setx /M SONARQUBE_VERSION '6.5'; \
-    setx /M SONARQUBE_JDBC_URL 'jdbc:sqlserver://sonarserver3.database.windows.net:1433;database=sonar;ssl=require;SelectMethod=Cursor'; \
+    setx /M SONARQUBE_JDBC_URL 'jdbc:sqlserver://sonarserver3.database.windows.net:1433;database=sonar;user=sonar@sonarserver3;password=DevOps123#@!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30; \
     setx /M SONARQUBE_JDBC_USERNAME 'sonar@sonarserver3'; \
     setx /M SONARQUBE_JDBC_PASSWORD 'DevOps123#@!'; \
     setx /M SONARQUBE_HOME C:\\sonarqube
