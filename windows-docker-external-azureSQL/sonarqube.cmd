@@ -6,6 +6,7 @@ set _sonarqube_jdbc_password=%2
 set _ms_azuresql_server_name=%3
 set _ms_azuresql_server_port=%4
 set _sonarqube_jdbc_url='jdbc:sqlserver://%_ms_azuresql_server_name%:%_ms_azuresql_server_port%;database=sonar;user=%_sonarqube_jdbc_username%;password=%_sonarqube_jdbc_password%;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30'
+echo "SonarQube JDBC URL: %_sonarqube_jdbc_url%"
 
 set _TMP=
 for /f "delims=" %%a in ('dir /b "C:\sonarqube\extensions\*.*"') do set _TMP=%%a
