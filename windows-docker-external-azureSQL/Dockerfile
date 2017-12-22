@@ -2,11 +2,13 @@ FROM openjdk:nanoserver
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
+ENV SONARQUBE_JDBC_USERNAME 
+ENV SONARQUBE_JDBC_PASSWORD
+ENV MS_AZURESQL_SERVER_NAME
+ENV MS_AZURESQL_SERVER_PORT
+
 RUN \
     setx /M SONARQUBE_VERSION '6.5'; \
-    setx /M SONARQUBE_JDBC_URL 'jdbc:sqlserver://sonarserver3.database.windows.net:1433;database=sonar;user=sonar@sonarserver3;password=DevOps123#@!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30'; \
-    setx /M SONARQUBE_JDBC_USERNAME 'sonar@sonarserver3'; \
-    setx /M SONARQUBE_JDBC_PASSWORD 'DevOps123#@!'; \
     setx /M SONARQUBE_HOME C:\\sonarqube
 
 RUN powershell -command \ 
@@ -29,4 +31,4 @@ WORKDIR C:\\sonarqube
 
 COPY sonarqube.cmd C:/sonarqube/bin/
 
-ENTRYPOINT ["C:\\sonarqube\\bin\\sonarqube.cmd"]
+CMD C:\\sonarqube\\bin\\sonarqube.cmd $env.SONARQUBE_JDBC_USERNAME $env.ENV SONARQUBE_JDBC_PASSWORD $env.MS_AZURESQL_SERVER_NAME $env.MS_AZURESQL_SERVER_PORT
