@@ -32,4 +32,4 @@ WORKDIR C:\\sonarqube
 COPY sonarqube.cmd C:/sonarqube/bin/
 
 CMD 
-ENTRYPOINT ["C:\\sonarqube\\bin\\sonarqube.cmd","%SONARQUBE_JDBC_USERNAME%","%SONARQUBE_JDBC_PASSWORD%","%MS_AZURESQL_SERVER_NAME%","%MS_AZURESQL_SERVER_PORT%"]
+ENTRYPOINT ["C:\\sonarqube\\bin\\sonarqube.cmd"]
