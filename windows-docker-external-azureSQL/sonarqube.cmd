@@ -1,6 +1,11 @@
 @Echo off
 Setlocal
 set _folder='C:\sonarqube\extensions\*.*'
+set _sonarqube_jdbc_username=%1		
+set _sonarqube_jdbc_password=%2		
+set _ms_azuresql_server_name=%3		
+set _ms_azuresql_server_port=%4
+set _sonarqube_jdbc_url='jdbc:sqlserver://%_ms_azuresql_server_name%:%_ms_azuresql_server_port%;database=sonar;user=%_sonarqube_jdbc_username%;password=%_sonarqube_jdbc_password%;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30'; \
 
 set _TMP=
 for /f "delims=" %%a in ('dir /b "C:\sonarqube\extensions\*.*"') do set _TMP=%%a
@@ -13,6 +18,6 @@ IF {%_TMP%}=={} (
     echo 'Data exists, trying to start with your data'
 )
 echo "***********[DEBUG]SONARQUBE_JDBC_URL*****************"
-echo "%SONARQUBE_JDBC_URL%"
+echo "%_sonarqube_jdbc_url%"
 
-java -jar lib/sonar-application-%SONARQUBE_VERSION%.jar -Dsonar.log.console=true -Dsonar.jdbc.username="%SONARQUBE_JDBC_USERNAME%" -Dsonar.jdbc.password="%SONARQUBE_JDBC_PASSWORD%" -Dsonar.jdbc.url="%SONARQUBE_JDBC_URL%" -Dsonar.web.javaAdditionalOpts="%SONARQUBE_WEB_JVM_OPTS% -Djava.security.egd=file:/dev/./urandom"
+java -jar lib/sonar-application-%SONARQUBE_VERSION%.jar -Dsonar.log.console=true -Dsonar.jdbc.username="%_sonarqube_jdbc_username%" -Dsonar.jdbc.password="%_sonarqube_jdbc_password%" -Dsonar.jdbc.url="%_sonarqube_jdbc_url%" -Dsonar.web.javaAdditionalOpts="%SONARQUBE_WEB_JVM_OPTS% -Djava.security.egd=file:/dev/./urandom"
