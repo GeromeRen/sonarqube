@@ -9,6 +9,10 @@ ENV MS_AZURESQL_SERVER_PORT ''
 
 RUN \
     setx /M SONARQUBE_VERSION '6.5'; \
+    setx /M SONARQUBE_JDBC_USERNAME $SONARQUBE_JDBC_USERNAME; \
+    setx /M SONARQUBE_JDBC_PASSWORD $SONARQUBE_JDBC_PASSWORD; \
+    setx /M MS_AZURESQL_SERVER_NAME $MS_AZURESQL_SERVER_NAME; \
+    setx /M MS_AZURESQL_SERVER_PORT $MS_AZURESQL_SERVER_PORT; \
     setx /M SONARQUBE_HOME C:\\sonarqube
 
 RUN powershell -command \ 
@@ -31,4 +35,4 @@ WORKDIR C:\\sonarqube
 
 COPY sonarqube.cmd C:/sonarqube/bin/
 
-CMD ["C:\sonarqube\bin\sonarqube.cmd","$env.SONARQUBE_JDBC_USERNAME","$env.SONARQUBE_JDBC_PASSWORD",$env.MS_AZURESQL_SERVER_NAME,$env.MS_AZURESQL_SERVER_PORT]
+ENTRYPOINT ["C:\\sonarqube\\bin\\sonarqube.cmd"]
