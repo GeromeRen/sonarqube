@@ -13,7 +13,7 @@ RUN \
     setx /M SONARQUBE_JDBC_PASSWORD $SONARQUBE_JDBC_PASSWORD; \
     setx /M MS_AZURESQL_SERVER_NAME $MS_AZURESQL_SERVER_NAME; \
     setx /M MS_AZURESQL_SERVER_PORT $MS_AZURESQL_SERVER_PORT; \
-    setx /M SONARQUBE_JDBC_URL='jdbc:sqlserver://%MS_AZURESQL_SERVER_NAME%:%MS_AZURESQL_SERVER_PORT%;database=sonar;user=%SONARQUBE_JDBC_USERNAME%;password=%SONARQUBE_JDBC_PASSWORD%;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30'; \
+    setx /M SONARQUBE_JDBC_URL 'jdbc:sqlserver://%MS_AZURESQL_SERVER_NAME%:%MS_AZURESQL_SERVER_PORT%;database=sonar;user=%SONARQUBE_JDBC_USERNAME%;password=%SONARQUBE_JDBC_PASSWORD%;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30'; \
     setx /M SONARQUBE_HOME C:\\sonarqube
 
 RUN powershell -command \ 
