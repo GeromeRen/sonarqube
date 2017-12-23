@@ -31,4 +31,4 @@ WORKDIR C:\\sonarqube
 
 COPY sonarqube.cmd C:/sonarqube/bin/
 
-CMD ["C:\\sonarqube\\bin\\sonarqube.cmd","$env.SONARQUBE_JDBC_USERNAME","$env.SONARQUBE_JDBC_PASSWORD",$env.MS_AZURESQL_SERVER_NAME,$env.MS_AZURESQL_SERVER_PORT]
+CMD ["C:\sonarqube\bin\sonarqube.cmd","$env.SONARQUBE_JDBC_USERNAME","$env.SONARQUBE_JDBC_PASSWORD",$env.MS_AZURESQL_SERVER_NAME,$env.MS_AZURESQL_SERVER_PORT]
