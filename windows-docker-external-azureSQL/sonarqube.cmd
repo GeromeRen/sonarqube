@@ -16,4 +16,4 @@ IF {%_TMP%}=={} (
 echo "***********[DEBUG]SONARQUBE_JDBC_URL*****************"
 echo "%_sonarqube_jdbc_url%"
 
-java -jar lib/sonar-application-%SONARQUBE_VERSION%.jar -Dsonar.log.console=true -Dsonar.jdbc.username="%_sonarqube_jdbc_username%" -Dsonar.jdbc.password="%_sonarqube_jdbc_password%" -Dsonar.jdbc.url="%_sonarqube_jdbc_url%" -Dsonar.web.javaAdditionalOpts="%SONARQUBE_WEB_JVM_OPTS% -Djava.security.egd=file:/dev/./urandom"
+java -jar lib/sonar-application-%SONARQUBE_VERSION%.jar -Dsonar.log.console=true -Dsonar.jdbc.username="%SONARQUBE_JDBC_USERNAME%" -Dsonar.jdbc.password="%SONARQUBE_JDBC_PASSWORD%" -Dsonar.jdbc.url="%_sonarqube_jdbc_url%" -Dsonar.web.javaAdditionalOpts="%SONARQUBE_WEB_JVM_OPTS% -Djava.security.egd=file:/dev/./urandom"
