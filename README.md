@@ -3,8 +3,8 @@
 
 ### To deploy a pre-built Docker container image in a Service Fabric application.
 #### 1. Prerequisite
-Create Azure Fabric Cluster in Azure - Select: Windows Data Center with Container <br>
-Create Azure SQL Database in Azure - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
+<strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
+<strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
 #### 2. Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
