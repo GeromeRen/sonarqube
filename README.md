@@ -57,7 +57,7 @@ Note: Remember to expose port 9000 in your Azure Load Balancer
                 gerome/sonarqube-azuresql-windows-docker</pre>
 
 #  More to Read
-## 1. To deploy SonarQube as a pre-built Linux docker container image in a Service Fabric application 
+## 1. To deploy SonarQube as [a pre-built Linux docker container image](https://hub.docker.com/_/sonarqube/) in a Service Fabric application 
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
@@ -72,7 +72,7 @@ $sudo mount -t cifs //****.file.core.windows.net/azurefileshare1 /data -o vers=3
 ### Deploy SonarQube Linux Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
-* in VSTS, New Project (ContainerizationSonarQubeLinuxAzureSQLProj) - Service Fabric Application - Container - Enter Image:  sonarqube:6.5- Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
+* in VSTS, New Project (ContainerizationSonarQubeLinuxAzureSQLProj) - Service Fabric Application - Container - Enter Image:  [sonarqube:6.5](https://hub.docker.com/_/sonarqube/)- Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
 
 * In ServiceManifest.xml, add below in CodePackage section:
 ```bash
