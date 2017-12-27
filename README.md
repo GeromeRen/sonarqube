@@ -10,7 +10,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 1. in VSTS, New Project (ContainerizationSonarQubeWindowsAzureSQLProj) - Service Fabric Application - Container - Enter Image:  gerome/sonarqube-azuresql-windows-docker - Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
 
 2. In ServiceManifest.xml, add below in CodePackage section:
-<pre>
+```bash
 <EntryPoint>
   <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
   <ContainerHost>
@@ -24,7 +24,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
       <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="sonarserver3.database.windows.net"/>
       <EnvironmentVariable Name="MS_AZURESQL_SERVER_PORT" Value="1433"/>
   </EnvironmentVariables>
-</pre>
+```
 Update SonarQube Service Endpoint:
 <pre>
 <Endpoint Name="FabricServiceSonarUbuntuTypeEndpoint" UriScheme="http" Port="9000" Protocol="http"/>
