@@ -11,7 +11,7 @@ Version 6.5
 ### Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
-* in VSTS, New Project (ContainerizationSonarQubeWindowsAzureSQLProj) - Service Fabric Application - Container - Enter Image:  gerome/sonarqube-azuresql-windows-docker - Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
+* in VSTS, New Project (ContainerizationSonarQubeWindowsAzureSQLProj) - Service Fabric Application - Container - Enter Image:  [gerome/sonarqube-azuresql-windows-docker](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker/) - Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
 
 * In ServiceManifest.xml, add below in CodePackage section:
 ```bash
