@@ -1,5 +1,7 @@
 # Overview
 Containers are based on [Microsoft Nanoserver](https://hub.docker.com/r/microsoft/nanoserver/) and [OpenJDK](https://hub.docker.com/_/openjdk/)
+# SonarQube Version
+Version 6.5
 ## SonarQube Windows Container with external Azure SQL Database
 
 ### To deploy a pre-built Docker container image in a Service Fabric application.
