@@ -44,7 +44,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 </Policies>
 ```
 ### Verify SonarQube
-SonarQube is running at Fabric endpoint: http://{Your Fabric Cluster Endpoint}:9000
+SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]()
 SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
 Note: Remember to expose port 9000 in your Azure Load Balancer 
 
@@ -110,7 +110,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 ```
 
 ### Verify SonarQube
-SonarQube is running at Fabric endpoint: http://{Your Fabric Cluster Endpoint}:9000 
+SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]()
 SonarQube Linux container persistence volume mount at /data/sonarqube/*
 
 ## 2. To deploy SonarQube as Windows docker container image with internal MySQL Database (in the same container)
