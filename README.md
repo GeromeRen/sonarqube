@@ -29,7 +29,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
       <EnvironmentVariable Name="MS_AZURESQL_SERVER_PORT" Value="****"/>
   </EnvironmentVariables>
 ```
-Update SonarQube Service Endpoint:
+* Update SonarQube Service Endpoint:
 ```bash
 <Endpoint Name="FabricServiceSonarUbuntuTypeEndpoint" UriScheme="http" Port="9000" Protocol="http"/>
 ```
