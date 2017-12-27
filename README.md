@@ -25,8 +25,8 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
   <EnvironmentVariables>
       <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="****@****"/>
       <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="****"/>
-      <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="****.database.windows.net"/>
-      <EnvironmentVariable Name="MS_AZURESQL_SERVER_PORT" Value="1433"/>
+      <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="****t"/>
+      <EnvironmentVariable Name="MS_AZURESQL_SERVER_PORT" Value="****"/>
   </EnvironmentVariables>
 ```
 Update SonarQube Service Endpoint:
@@ -44,8 +44,8 @@ Update SonarQube Service Endpoint:
 </Policies>
 ```
 #### Verify SonarQube
-SonarQube is running at Fabric endpoint: http://\*\*\*\*.eastus2.cloudapp.azure.com:9000 <br>
-SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine <br>
+SonarQube is running at Fabric endpoint: http://{Your Fabric Cluster Endpoint}:9000
+SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
 Note: Remember to expose port 9000 in your Azure Load Balancer 
 
 ## 2. To Run as Docker Command Line
@@ -61,14 +61,17 @@ Note: Remember to expose port 9000 in your Azure Load Balancer
 ## 1. To deploy SonarQube as a pre-built Linux docker container image in a Service Fabric application 
 #### Prerequisite
 <strong> * Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
+
 <strong> * Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
+
 <strong> * Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
 Data Volumes with SMB Global mapping
+
 Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
 #### Mount Azure file to Ubuntu machine to persist the volume
-To connect to this file share from the Ubuntu machine:
+To connect to this file share from the Ubuntu machine (e.g. Mount point /data):
 ```bash
-$sudo mount -t cifs //geromestorageacct1.file.core.windows.net/azurefileshare1 /data -o vers=3.0,username=geromestorageacct1,password=cfekb0EQtSaaCKkSvQXGIr8iJMZLxWB5e2d+uu0WkuOo8OQmLtrtQFqFeh5MqGZCRJUONr7tn1eB2T9yCeIkHg==,dir_mode=0777,file_mode=0777,sec=ntlmssp
+$sudo mount -t cifs //****.file.core.windows.net/azurefileshare1 /data -o vers=3.0,username={Your Store Account Name Here},password={Your Password Here},dir_mode=0777,file_mode=0777,sec=ntlmssp
 ```
 #### Deploy SonarQube Linux Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
@@ -78,14 +81,13 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 * In ServiceManifest.xml, add below in CodePackage section:
 ```bash
 <EntryPoint>
-  <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
   <ContainerHost>
     <ImageName>sonarqube:6.5</ImageName>
   </ContainerHost>
 </EntryPoint>
 <!-- Pass environment variables to your container: -->
 <EnvironmentVariables>
-  <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="****"/>
+  <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="****@****"/>
   <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="****"/>
   <EnvironmentVariable Name="SONARQUBE_JDBC_URL" Value="jdbc:sqlserver://{Your Azure SQL DB Server Endpoint Here}:{{Your Azure SQL DB Server Port Here};database=sonar;user={SONARQUBE_JDBC_USERNAME Here};password={SONARQUBE_JDBC_PASSWORD Here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30"/>
 </EnvironmentVariables>
@@ -111,7 +113,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 ```
 
 #### Verify SonarQube
-SonarQube is running at Fabric endpoint: http://\*\*\*\*.eastus2.cloudapp.azure.com:9000 
+SonarQube is running at Fabric endpoint: http://{Your Fabric Cluster Endpoint}:9000 
 SonarQube Linux container persistence volume mount at /data/sonarqube/*
 
 ## 2. To deploy SonarQube as Windows docker container image with internal MySQL Database (in the same container)
