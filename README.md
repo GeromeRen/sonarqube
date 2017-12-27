@@ -8,7 +8,7 @@ Version 6.5
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube and 
-* <strong>Expose port 9000 in your Azure Load Balancer for SonarQube to access</strong>
+* <strong>Expose port 9000 in your Azure Fabric Cluster Load Balancer for SonarQube to access</strong>
 ### Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
@@ -61,7 +61,7 @@ SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
-* <strong>Expose port 9000 in your Azure Load Balancer for SonarQube to access</strong>
+* <strong>Expose port 9000 in your Azure Fabric Cluster Load Balancer for SonarQube to access</strong>
 * <strong>Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
 Data Volumes with SMB Global mapping
 Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
