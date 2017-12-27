@@ -1,6 +1,6 @@
 # Overview
-Container are based on [Microsoft Nanoserver](https://hub.docker.com/r/microsoft/nanoserver/) and [OpenJDK](https://hub.docker.com/_/openjdk/) <br/>
-Container use Azure SQL Database as external database
+* Container are based on [Microsoft Nanoserver](https://hub.docker.com/r/microsoft/nanoserver/) and [OpenJDK](https://hub.docker.com/_/openjdk/) <br/>
+* Container use Azure SQL Database as external database
 # SonarQube Version
 Version 6.5
 # Getting Started Instructions
