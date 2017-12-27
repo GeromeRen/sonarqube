@@ -1,16 +1,14 @@
 # Overview
-* Container are based on [Microsoft Nanoserver](https://hub.docker.com/r/microsoft/nanoserver/) and [OpenJDK](https://hub.docker.com/_/openjdk/) <br/>
+* Container is based on [Microsoft Nanoserver](https://hub.docker.com/r/microsoft/nanoserver/) and [OpenJDK](https://hub.docker.com/_/openjdk/) <br/>
 * Container use Azure SQL Database as external database
 # SonarQube Version
 Version 6.5
 # Getting Started Instructions
-## 1. SonarQube Windows Container with external Azure SQL Database
-
-### To deploy a pre-built Docker container image in a Service Fabric application.
-#### 1. Prerequisite
+## 1. To deploy a pre-built Docker container image in a Service Fabric application.
+#### Prerequisite
 <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
-#### 2. Deploy SonarQube Windows Container Application
+#### Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
 * in VSTS, New Project (ContainerizationSonarQubeWindowsAzureSQLProj) - Service Fabric Application - Container - Enter Image:  gerome/sonarqube-azuresql-windows-docker - Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
@@ -45,18 +43,18 @@ Update SonarQube Service Endpoint:
   </ContainerHostPolicies>
 </Policies>
 ```
-#### 3. Verify SonarQube
+#### Verify SonarQube
 SonarQube is running at Fabric endpoint: http://fabric21.eastus2.cloudapp.azure.com:9000 <br>
 SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine <br>
 Note: Remember to expose port 9000 in your Azure Load Balancer 
 
-### To run as Docker command
+## 2. To Run as Docker Command Line
 <pre>docker run --name sonar -it -p 9000:9000 \
                 -v D:/sonarqube/extensions:C:/sonarqube/extensions \
                 -e SONARQUBE_JDBC_USERNAME='****@****' \
                 -e SONARQUBE_JDBC_PASSWORD='****' \
-                -e MS_AZURESQL_SERVER_NAME='****.database.windows.net' \
-                -e MS_AZURESQL_SERVER_PORT='1433' \
+                -e MS_AZURESQL_SERVER_NAME='****' \
+                -e MS_AZURESQL_SERVER_PORT='****' \
                 gerome/sonarqube-azuresql-windows-docker</pre>
 
 ## SonarQube Windows Container with internal MySQL Database (in the same container)
