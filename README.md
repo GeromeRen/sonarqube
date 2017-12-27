@@ -61,12 +61,9 @@ Note: Remember to expose port 9000 in your Azure Load Balancer
 ## 1. To deploy SonarQube as a pre-built Linux docker container image in a Service Fabric application 
 #### Prerequisite
 <strong> * Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
-
 <strong> * Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
-
 <strong> * Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
 Data Volumes with SMB Global mapping
-
 Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
 #### Mount Azure file to Ubuntu machine to persist the volume
 To connect to this file share from the Ubuntu machine (e.g. Mount point /data):
