@@ -58,10 +58,7 @@ Note: Remember to expose port 9000 in your Azure Load Balancer
                 gerome/sonarqube-azuresql-windows-docker</pre>
 
 #  More to Read
-## 1. To deploy a pre-built Windows docker container image in a Service Fabric application with internal MySQL Database (in the same container)
-Please reference to: https://github.com/dnikolayev/sonarqube-mysql-windows-docker
-
-## 2. To deploy a pre-built Linux docker container image in a Service Fabric application (Azure Fabric Cluster with UbuntuServer 16.04-LTS instance)
+## 1. To deploy a pre-built Linux docker container image in a Service Fabric application 
 #### Prerequisite
 <strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
 <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
@@ -77,9 +74,9 @@ $sudo mount -t cifs //geromestorageacct1.file.core.windows.net/azurefileshare1 /
 Deploy SonarQube Linux Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
-1. in VSTS, New Project (ContainerizationSonarQubeLinuxAzureSQLProj) - Service Fabric Application - Container - Enter Image:  sonarqube:6.5- Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
+* in VSTS, New Project (ContainerizationSonarQubeLinuxAzureSQLProj) - Service Fabric Application - Container - Enter Image:  sonarqube:6.5- Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
 
-2. In ServiceManifest.xml, add below in CodePackage section:
+* In ServiceManifest.xml, add below in CodePackage section:
 ```bash
 <EntryPoint>
   <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
@@ -95,12 +92,12 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 </EnvironmentVariables>
 ```
 
-Update SonarQube Service Endpoint:
-
+* Update SonarQube Service Endpoint:
+```bash
 <Endpoint Name="FabricServiceSonarUbuntuTypeEndpoint" UriScheme="http" Port="9000" Protocol="http"/>
- 
+```
 
-3. In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding:
+* In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding:
 ```bash
 <ConfigOverrides />
 <Policies>
@@ -114,8 +111,9 @@ Update SonarQube Service Endpoint:
 </Policies>
 ```
 
-Verify SonarQube
+#### Verify SonarQube
 SonarQube is running at Fabric endpoint: http://fabric21.eastus2.cloudapp.azure.com:9000 
-
 SonarQube Linux container persistence volume mount at /data/sonarqube/*
 
+## 2. To deploy SonarQube as Windows docker container image with internal MySQL Database (in the same container)
+Please reference to: https://github.com/dnikolayev/sonarqube-mysql-windows-docker
