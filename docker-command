@@ -1,4 +1,0 @@
-docker pull postgres
-docker run --name postgresqldb -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -d postgres
-docker pull sonarqube
-docker run --name sq --link postgresqldb -e SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar -p 9000:9000 -d sonarqube
