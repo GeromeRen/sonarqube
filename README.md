@@ -3,7 +3,7 @@
 
 ### To deploy a pre-built Docker container image in a Service Fabric application.
 #### 1. Prerequisite
-Create Azure Fabric Cluster in Azure - Select: Windows Data Center with Container
+Create Azure Fabric Cluster in Azure - Select: Windows Data Center with Container <br>
 Create Azure SQL Database in Azure - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
 #### 2. Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
@@ -42,7 +42,8 @@ Update SonarQube Service Endpoint:
 ```
 #### 3. Verify SonarQube
 SonarQube is running at Fabric endpoint: http://fabric21.eastus2.cloudapp.azure.com:9000 <br>
-SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
+SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine <br>
+Note: Remember to expose port 9000 in your Azure Load Balancer 
 
 ### To run as Docker command
 <pre>docker run --name sonar -it -p 9000:9000 \
@@ -54,3 +55,4 @@ SonarQube Windows container persistence volume mount at d:\sonarqube on containe
                 gerome/sonarqube-azuresql-windows-docker</pre>
 
 ## SonarQube Windows Container with internal MySQL Database (in the same container)
+Please reference to: https://github.com/dnikolayev/sonarqube-mysql-windows-docker
