@@ -1,5 +1,6 @@
-# Sonarqube
+# Sonarqube Windows Container
 ## SonarQube Windows Container with external Azure SQL Database
+
 ### To deploy a pre-built Docker container image in a Service Fabric application.
 #### Prerequisite
 Create Azure Fabric Cluster in Azure - Select: Windows Data Center with Container
@@ -26,11 +27,11 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
   </EnvironmentVariables>
 ```
 Update SonarQube Service Endpoint:
-<pre>
+```bash
 <Endpoint Name="FabricServiceSonarUbuntuTypeEndpoint" UriScheme="http" Port="9000" Protocol="http"/>
-</pre>
+```
 3. In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding:
-<pre>
+```bash
 <ConfigOverrides />
 <Policies>
   <ContainerHostPolicies CodePackageRef="Code">
@@ -38,7 +39,8 @@ Update SonarQube Service Endpoint:
     <Volume Source="d:\sonarqube\extensions" Destination="c:\sonarqube\extensions" IsReadOnly="false"> </Volume>
   </ContainerHostPolicies>
 </Policies>
-</pre>
+```
+
 ### To run as Docker command
 <pre>docker run --name sonar -it -p 9000:9000 \
                 -v D:/sonarqube/extensions:C:/sonarqube/extensions \
