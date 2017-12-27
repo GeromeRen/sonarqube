@@ -5,10 +5,10 @@
 Version 6.5
 # Getting Started Instructions
 ## 1. To deploy SonarQube using this pre-built Docker container image in a Service Fabric application.
-#### Prerequisite
+### Prerequisite
 <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
-#### Deploy SonarQube Windows Container Application
+### Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
 * in VSTS, New Project (ContainerizationSonarQubeWindowsAzureSQLProj) - Service Fabric Application - Container - Enter Image:  gerome/sonarqube-azuresql-windows-docker - Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
@@ -43,7 +43,7 @@ Update SonarQube Service Endpoint:
   </ContainerHostPolicies>
 </Policies>
 ```
-#### Verify SonarQube
+### Verify SonarQube
 SonarQube is running at Fabric endpoint: http://{Your Fabric Cluster Endpoint}:9000
 SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
 Note: Remember to expose port 9000 in your Azure Load Balancer 
@@ -59,18 +59,18 @@ Note: Remember to expose port 9000 in your Azure Load Balancer
 
 #  More to Read
 ## 1. To deploy SonarQube as a pre-built Linux docker container image in a Service Fabric application 
-#### Prerequisite
+### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
 * <strong>Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
 Data Volumes with SMB Global mapping
 Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
-#### Mount Azure file to Ubuntu machine to persist the volume
+### Mount Azure file to Ubuntu machine to persist the volume
 To connect to this file share from the Ubuntu machine (e.g. Mount point /data):
 ```bash
 $sudo mount -t cifs //****.file.core.windows.net/azurefileshare1 /data -o vers=3.0,username={Your Store Account Name Here},password={Your Password Here},dir_mode=0777,file_mode=0777,sec=ntlmssp
 ```
-#### Deploy SonarQube Linux Container Application
+### Deploy SonarQube Linux Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
 * in VSTS, New Project (ContainerizationSonarQubeLinuxAzureSQLProj) - Service Fabric Application - Container - Enter Image:  sonarqube:6.5- Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
@@ -109,7 +109,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 </Policies>
 ```
 
-#### Verify SonarQube
+### Verify SonarQube
 SonarQube is running at Fabric endpoint: http://{Your Fabric Cluster Endpoint}:9000 
 SonarQube Linux container persistence volume mount at /data/sonarqube/*
 
