@@ -4,7 +4,7 @@
 # SonarQube Version
 Version 6.5
 # Getting Started Instructions
-## 1. To deploy a pre-built Docker container image in a Service Fabric application.
+## 1. To deploy the pre-built Docker container image in a Service Fabric application.
 #### Prerequisite
 <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
@@ -58,14 +58,14 @@ Note: Remember to expose port 9000 in your Azure Load Balancer
                 gerome/sonarqube-azuresql-windows-docker</pre>
 
 #  More to Read
-## SonarQube Windows Container with internal MySQL Database (in the same container)
+## 1. To deploy a pre-built Windows docker container image in a Service Fabric application with internal MySQL Database (in the same container)
 Please reference to: https://github.com/dnikolayev/sonarqube-mysql-windows-docker
 
-## SonarQube as Linux Utuntu Container with Azure SQL DB in Azure Fabric Cluster
-Prerequisite
-Create Azure Fabric Cluster in Azure - Select: UbuntuServer 16.04-LTS
-Create Azure SQL Database in Azure - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
-Create Azure File in Azure - Mount as container host volume for SonarQube persistence using SMB protocol
+## 2. To deploy a pre-built Linux docker container image in a Service Fabric application (Azure Fabric Cluster with UbuntuServer 16.04-LTS instance)
+#### Prerequisite
+<strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
+<strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
+<strong>Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
 Data Volumes with SMB Global mapping
 Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
 
