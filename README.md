@@ -4,7 +4,7 @@
 # SonarQube Version
 Version 6.5
 # Getting Started Instructions
-## 1. To deploy SonarQube using this pre-built Docker container image in a Service Fabric application.
+## 1. To deploy SonarQube using [this pre-built Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker/) in a Service Fabric application.
 ### Prerequisite
 <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
