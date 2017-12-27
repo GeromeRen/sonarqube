@@ -6,8 +6,9 @@ Version 6.5
 # Getting Started Instructions
 ## 1. To deploy SonarQube using [this pre-built Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker/) in a Service Fabric application.
 ### Prerequisite
-<strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
-<strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
+* <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
+* <strong>Create Azure SQL Database in Azure</strong> - Make sure to select collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube and 
+* <strong>Expose port 9000 in your Azure Load Balancer for SonarQube to access</strong>
 ### Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
@@ -45,7 +46,6 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 ```
 ### Verify SonarQube
 SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
-Note: Remember to expose port 9000 in your Azure Load Balancer 
 
 ## 2. To Run as Docker Command Line
 <pre>docker run --name sonar -it -p 9000:9000 \
@@ -61,6 +61,7 @@ Note: Remember to expose port 9000 in your Azure Load Balancer
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
+* <strong>Expose port 9000 in your Azure Load Balancer for SonarQube to access</strong>
 * <strong>Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
 Data Volumes with SMB Global mapping
 Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
