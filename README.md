@@ -20,9 +20,9 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
   </EntryPoint>
   <!-- Pass environment variables to your container: -->
   <EnvironmentVariables>
-      <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="sonar@sonarserver3"/>
-      <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="Dev***123***"/>
-      <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="sonarserver3.database.windows.net"/>
+      <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="****@****"/>
+      <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="****"/>
+      <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="****.database.windows.net"/>
       <EnvironmentVariable Name="MS_AZURESQL_SERVER_PORT" Value="1433"/>
   </EnvironmentVariables>
 ```
@@ -49,7 +49,7 @@ SonarQube Windows container persistence volume mount at d:\sonarqube on containe
                 -v D:/sonarqube/extensions:C:/sonarqube/extensions \
                 -e SONARQUBE_JDBC_USERNAME='****@****' \
                 -e SONARQUBE_JDBC_PASSWORD='****' \
-                -e MS_AZURESQL_SERVER_NAME='****' \
+                -e MS_AZURESQL_SERVER_NAME='****.database.windows.net' \
                 -e MS_AZURESQL_SERVER_PORT='1433' \
                 gerome/sonarqube-azuresql-windows-docker</pre>
 
