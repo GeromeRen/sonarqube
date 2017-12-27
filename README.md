@@ -2,10 +2,10 @@
 ## SonarQube Windows Container with external Azure SQL Database
 
 ### To deploy a pre-built Docker container image in a Service Fabric application.
-#### Prerequisite
+#### 1. Prerequisite
 Create Azure Fabric Cluster in Azure - Select: Windows Data Center with Container
 Create Azure SQL Database in Azure - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
-####Deploy SonarQube Windows Container Application
+#### 2. Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
 * in VSTS, New Project (ContainerizationSonarQubeWindowsAzureSQLProj) - Service Fabric Application - Container - Enter Image:  gerome/sonarqube-azuresql-windows-docker - Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
@@ -30,7 +30,7 @@ Update SonarQube Service Endpoint:
 ```bash
 <Endpoint Name="FabricServiceSonarUbuntuTypeEndpoint" UriScheme="http" Port="9000" Protocol="http"/>
 ```
-3. In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding:
+* In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding:
 ```bash
 <ConfigOverrides />
 <Policies>
@@ -40,6 +40,9 @@ Update SonarQube Service Endpoint:
   </ContainerHostPolicies>
 </Policies>
 ```
+#### 3. Verify SonarQube
+SonarQube is running at Fabric endpoint: http://fabric21.eastus2.cloudapp.azure.com:9000 
+SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
 
 ### To run as Docker command
 <pre>docker run --name sonar -it -p 9000:9000 \
