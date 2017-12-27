@@ -41,7 +41,7 @@ Update SonarQube Service Endpoint:
 </Policies>
 ```
 #### 3. Verify SonarQube
-SonarQube is running at Fabric endpoint: http://fabric21.eastus2.cloudapp.azure.com:9000 
+SonarQube is running at Fabric endpoint: http://fabric21.eastus2.cloudapp.azure.com:9000 <br>
 SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
 
 ### To run as Docker command
