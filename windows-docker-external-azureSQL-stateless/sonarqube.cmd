@@ -1,8 +1,8 @@
 @Echo off
 Setlocal
-set _folder='C:\sonarqube\extensions\*.*'
+set _folder='S:\sonarqube\extensions\*.*'
 set _TMP=
-for /f "delims=" %%a in ('dir /b "C:\sonarqube\extensions\*.*"') do set _TMP=%%a
+for /f "delims=" %%a in ('dir /b "S:\sonarqube\extensions\*.*"') do set _TMP=%%a
 echo "Checking Folder: %_folder%"
 
 set sdrive=S:
