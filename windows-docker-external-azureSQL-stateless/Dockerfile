@@ -15,23 +15,21 @@ RUN powershell -command \
 
     Invoke-WebRequest "https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$env:SONARQUBE_VERSION.zip" -OutFile "sonarqube.zip"; \
 
-    net use S: \\azurefiledriverac1.file.core.windows.net\sonarqube4windows1 /u:AZURE\azurefiledriverac1 kZaxd8C98Bhjf3HO3YyDJpmBCrP/M5HbO4m/lg0oMqGnYXGBWqtKSNs7O7Rv8kztSgPT05hEbDoMxezFofyUXQ== ; \
-
-    Expand-Archive -Path c:\sonarqube.zip -DestinationPath S:\ ; \
+    Expand-Archive -Path c:\sonarqube.zip -DestinationPath C:\ ; \
 
     Remove-Item sonarqube.zip ; \
 
     Rename-Item sonarqube-$env:SONARQUBE_VERSION sonarqube ; \
 
-    Rename-Item S:\sonarqube\extensions S:\sonarqube\original_extensions ; 
+    Rename-Item c:\sonarqube\extensions c:\sonarqube\original_extensions ;
 
-VOLUME S:\\sonarqube\\extensions
+VOLUME c:\\sonarqube\\extensions
 
 EXPOSE 9000
 
-WORKDIR S:\\sonarqube
+WORKDIR C:\\sonarqube
 
-COPY sonarqube.cmd S:/sonarqube/bin/
+COPY sonarqube.cmd C:/sonarqube/bin/
 
 CMD 
-ENTRYPOINT ["S:\\sonarqube\\bin\\sonarqube.cmd"]
+ENTRYPOINT ["C:\\sonarqube\\bin\\sonarqube.cmd"]
