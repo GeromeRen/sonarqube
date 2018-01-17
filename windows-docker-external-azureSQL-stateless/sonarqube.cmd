@@ -1,12 +1,12 @@
 @Echo off
 Setlocal
-set _folder='S:\sonarqube\extensions\*.*'
+set _folder='S:\sonarqube\*.*'
 set _TMP=
 set sdrive=S:
 set ssonarqubedrive=S:\sonarqube
 
 net use S: \\azurefiledriverac1.file.core.windows.net\sonarqube4windows1 /u:AZURE\azurefiledriverac1 kZaxd8C98Bhjf3HO3YyDJpmBCrP/M5HbO4m/lg0oMqGnYXGBWqtKSNs7O7Rv8kztSgPT05hEbDoMxezFofyUXQ==
-for /f "delims=" %%a in ('dir /b "S:\sonarqube\extensions\*.*"') do set _TMP=%%a
+for /f "delims=" %%a in ('dir /b "S:\sonarqube\*.*"') do set _TMP=%%a
 echo "Checking Folder: %_folder%"
 CD /D %sdrive%
 
@@ -14,7 +14,6 @@ if not exist "S:\sonarqube\" mkdir S:\sonarqube
 
 IF {%_TMP%}=={} (
     echo 'First run'
-    
 	xcopy C:\sonarqube\* S:\sonarqube /e /i /h
 ) ELSE (
     echo 'Data exists, trying to start with your data'
