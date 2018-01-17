@@ -15,7 +15,7 @@ RUN powershell -command \
 
     Invoke-WebRequest "https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$env:SONARQUBE_VERSION.zip" -OutFile "sonarqube.zip"; \
 
-    net use S: \\azurefiledriverac1.file.core.windows.net\cloudstor-metadata /u:AZURE\azurefiledriverac1 kZaxd8C98Bhjf3HO3YyDJpmBCrP/M5HbO4m/lg0oMqGnYXGBWqtKSNs7O7Rv8kztSgPT05hEbDoMxezFofyUXQ== ; \
+    net use S: \\azurefiledriverac1.file.core.windows.net\sonarqube4windows1 /u:AZURE\azurefiledriverac1 kZaxd8C98Bhjf3HO3YyDJpmBCrP/M5HbO4m/lg0oMqGnYXGBWqtKSNs7O7Rv8kztSgPT05hEbDoMxezFofyUXQ== ; \
 
     Expand-Archive -Path c:\sonarqube.zip -DestinationPath S:\ ; \
 
