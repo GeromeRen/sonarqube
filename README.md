@@ -183,7 +183,8 @@ Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/ser
 * <strong>Expose port 9000 in your Azure Fabric Cluster Load Balancer for SonarQube to access</strong>
 * <strong>Config firewall in sonarqube to allow service fabric cluster IP access</strong>
 ### Install the Docker volume driver for Azure
-Host Sonarqube home directory in Azure Files, this allow your Sonarqube container is moved or restarted on a different host. install it manually by using the RDP/SSH protocols:
+Host Sonarqube home directory in Azure Files, this allow your Sonarqube container is moved or restarted on a different host. 
+<strong>Install it manually in desired Service Fabric cluster nodes by using the RDP/SSH protocols:</strong>
 ```
 docker plugin install --alias cloudstor:azure \
   --grant-all-permissions docker4x/cloudstor:17.06.1-ce-azure1  \
