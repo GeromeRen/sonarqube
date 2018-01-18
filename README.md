@@ -51,7 +51,7 @@ Note: More volume to persist: https://github.com/SonarSource/docker-sonarqube/bl
 ### Verify SonarQube
 SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
                 
-## 2. To deploy SonarQube using [this pre-built Windows Stateless Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker-stateless/) in a Service Fabric application with Azure SQL Database and Azure File. Check [this](https://github.com/GeromeRen/sonarqube/tree/master/windows-docker-external-azureSQL-stateless) out for Dockerfile build this image
+## 2. To deploy SonarQube using [this pre-built Windows Stateless Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker-stateless/) in a Service Fabric application with Azure SQL Database and Azure File to host SonarQube home directory for stateless. Check [this](https://github.com/GeromeRen/sonarqube/tree/master/windows-docker-external-azureSQL-stateless) out for Dockerfile build this image
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
@@ -111,7 +111,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 ```
 ### Verify SonarQube
 SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube home directory will be entirely hosts in Azure file you created. This allows you to start/restart SonarQube as windows container in any desired node in Service Fabric cluster.
-## 3. To deploy SonarQube as [a pre-built Linux docker container image](https://hub.docker.com/_/sonarqube/) in a Service Fabric application 
+## 3. To deploy SonarQube as [a pre-built Linux docker container image](https://hub.docker.com/_/sonarqube/) in a Service Fabric application with Azure SQL Database and Azure File to persist volume in docker host
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
@@ -119,6 +119,8 @@ SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:
 * <strong>Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
 Data Volumes with SMB Global mapping
 Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
+* <strong>Expose port 9000 in your Azure Fabric Cluster Load Balancer for SonarQube to access</strong>
+* <strong>Config firewall in sonarqube to allow service fabric cluster IP access</strong>
 ### Mount Azure file to Ubuntu machine to persist the volume
 To connect to this file share from the Ubuntu machine (e.g. Mount point /data):
 ```bash
@@ -166,14 +168,67 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 ### Verify SonarQube
 SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube Linux container persistence volume mount at /data/sonarqube/*
 
-## 4. TBD
+## 4. To deploy SonarQube as [a pre-built Linux docker container image](https://hub.docker.com/_/sonarqube/) in a Service Fabric application with Azure SQL Database and docker Azure volume plugin to host SonarQube home directory for stateless
+### Prerequisite
+* <strong>Create Azure Fabric Cluster in Azure</strong> - Select: UbuntuServer 16.04-LTS
+* <strong>Create Azure SQL Database in Azure</strong> - Make sure to select  collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
+* <strong>Expose port 9000 in your Azure Fabric Cluster Load Balancer for SonarQube to access</strong>
+* <strong>Create Azure File in Azure</strong> - Mount as container host volume for SonarQube persistence using SMB protocol
+Data Volumes with SMB Global mapping
+Use RDP to access the Ubuntu machine: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-nodetypes
+* <strong>Expose port 9000 in your Azure Fabric Cluster Load Balancer for SonarQube to access</strong>
+* <strong>Config firewall in sonarqube to allow service fabric cluster IP access</strong>
+### Install the Docker volume driver for Azure
+Host Sonarqube home directory in Azure Files, this allow your Sonarqube container is moved or restarted on a different host. install it manually by using the RDP/SSH protocols:
 ```
-docker plugin install --alias cloudstor:azure2 \
+docker plugin install --alias cloudstor:azure \
   --grant-all-permissions docker4x/cloudstor:17.06.1-ce-azure1  \
   CLOUD_PLATFORM=AZURE \
   AZURE_STORAGE_ACCOUNT_KEY="kZaxd8C98Bhjf3HO3YyDJpmBCrP/M5HbO4m/lg0oMqGnYXGBWqtKSNs7O7Rv8kztSgPT05hEbDoMxezFofyUXQ==" \
-  AZURE_STORAGE_ACCOUNT="azurefiledriverac1" \
+  AZURE_STORAGE_ACCOUNT="yourazurestorageacct" \
   DEBUG=1
 ```
+More about volume driver detail refer to https://docs.docker.com/docker-for-azure/persistent-data-volumes/ and https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-containers-volume-logging-drivers
+### Deploy SonarQube Linux Container Application
+Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
+
+* in VSTS, New Project (ContainerizationSonarQubeLinuxAzureSQLProj) - Service Fabric Application - Container - Enter Image:  [sonarqube:6.5](https://hub.docker.com/_/sonarqube/)- Service Name (ContainerizationSonarQubeWindowsAzureSQLSrv)
+
+* In ServiceManifest.xml, add below in CodePackage section:
+```bash
+<EntryPoint>
+  <ContainerHost>
+    <ImageName>sonarqube:6.5</ImageName>
+  </ContainerHost>
+</EntryPoint>
+<!-- Pass environment variables to your container: -->
+<EnvironmentVariables>
+  <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="****@****"/>
+  <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="****"/>
+  <EnvironmentVariable Name="SONARQUBE_JDBC_URL" Value="jdbc:sqlserver://{Your Azure SQL DB Server Endpoint Here}:{{Your Azure SQL DB Server Port Here};database=sonar;user={SONARQUBE_JDBC_USERNAME Here};password={SONARQUBE_JDBC_PASSWORD Here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30"/>
+</EnvironmentVariables>
+```
+
+* Update SonarQube Service Endpoint:
+```bash
+<Endpoint Name="FabricServiceSonarUbuntuTypeEndpoint" UriScheme="http" Port="9000" Protocol="http"/>
+```
+
+* In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding and volumes to mount
+```bash
+<ConfigOverrides />
+<Policies>
+  <ContainerHostPolicies CodePackageRef="Code">
+    <PortBinding ContainerPort="9000" EndpointRef="FabricServiceSonarUbuntuTypeEndpoint"/>
+    <Volume Source="sonarhomevolume" Destination="/opt/sonarqube" Driver="cloudstor:azure" IsReadOnly="false">
+      <DriverOption Name="share" Value="sonarhomevolume"/>
+    </Volume>
+  </ContainerHostPolicies>
+</Policies>
+```
+
+### Verify SonarQube
+SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube Linux container persistence volume mount at /data/sonarqube/*
+
 ## 5. To deploy SonarQube as Windows docker container image with internal MySQL Database (in the same container)
 Please reference to: https://github.com/dnikolayev/sonarqube-mysql-windows-docker
