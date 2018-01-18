@@ -219,7 +219,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 <Endpoint Name="FabricServiceSonarUbuntuTypeEndpoint" UriScheme="http" Port="9000" Protocol="http"/>
 ```
 
-* In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding and volumes to mount
+* In ApplicationManifest.xml, add below in ServiceManifestImport section to config container port-to-port binding and volumes to mount using created cloudstor Azure volume driver
 ```bash
 <ConfigOverrides />
 <Policies>
