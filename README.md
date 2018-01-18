@@ -1,7 +1,11 @@
 # Overview
 * Container is based on [Microsoft Nanoserver](https://hub.docker.com/r/microsoft/nanoserver/) and [OpenJDK](https://hub.docker.com/_/openjdk/) <br/>
-* Follow the first instruction to start SonarQube Windows Container using Azure SQL Database as external database
-* Follow the second instruction to start Stateless Container Windows Container using Azure SQL Database as external database as well as mount the Azure File share directly within the container using net use.
+* Follow instruction 1 in below to start SonarQube Windows Container using Azure SQL database as external database
+* Follow instruction 2 in below to start stateless SonarQube Windows container using Azure SQL database as external database as well as mount the Azure File share directly within the container using net use.
+* Follow instruction 3 in below to start SonarQube Linux Unbuntu Container using Azure SQL database as external database and persist volume in docker host via Azure File SMB protocol.
+* Follow instruction 4 in below to start stateless SonarQube Linux Ubuntu container using Azure SQL database as external database as well use a volume created with Cloudstor volume driver to mount entire SonarQube home directory as data volume.
+* Follow links in instruction 5 in below to start SonarQube Linux Ubuntu container with inner MySQL database.
+
 # SonarQube Version
 Version 6.5
 # Getting Started Instructions
