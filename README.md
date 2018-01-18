@@ -77,7 +77,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
   </EntryPoint>
   <!-- Pass environment variables to your container: -->
   <EnvironmentVariables>
-      <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="****"/>
+      <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="**@**"/>
       <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="****"/>
       <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="****"/>
       <EnvironmentVariable Name="MS_AZURESQL_SERVER_PORT" Value="****"/>
@@ -87,7 +87,8 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
       <EnvironmentVariable Name="AZUREFILE_ACC_NAME" Value="****"/>
       <EnvironmentVariable Name="AZUREFILE_ACC_KEY" Value="****"/>
   </EnvironmentVariables>
-  e.g
+  
+  e.g.
   <EnvironmentVariables>
       <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="chunyu.ren@sonarserver"/>
       <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="mypassword"/>
