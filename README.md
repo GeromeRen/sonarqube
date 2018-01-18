@@ -11,6 +11,7 @@ Version 6.5
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube and 
 * <strong>Expose port 9000 in your Azure Fabric Cluster Load Balancer for SonarQube to access</strong>
 * <strong>Config firewall in sonarqube to allow service fabric cluster IP access</strong>
+* Login the target host machine using RDP protocol to create persist volume d:\sonarqube\extensions in docker host
 ### Deploy SonarQube Windows Container Application
 Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers to create and deploy a SonarQube Windows Container Application
 
@@ -45,6 +46,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
     <Volume Source="d:\sonarqube\extensions" Destination="c:\sonarqube\extensions" IsReadOnly="false"> </Volume>
   </ContainerHostPolicies>
 </Policies>
+Note: More volume to persist: https://github.com/SonarSource/docker-sonarqube/blob/master/recipes.md
 ```
 ### Verify SonarQube
 SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
