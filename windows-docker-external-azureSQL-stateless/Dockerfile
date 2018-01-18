@@ -23,11 +23,11 @@ RUN powershell -command \
 
     Rename-Item c:\sonarqube\extensions c:\sonarqube\original_extensions ;
 
-VOLUME S:\\sonarqube
+VOLUME c:\\sonarqube
 
 EXPOSE 9000
 
-WORKDIR S:\\sonarqube
+WORKDIR C:\\sonarqube
 
 COPY sonarqube.cmd C:/sonarqube/bin/
 
