@@ -5,7 +5,7 @@
 # SonarQube Version
 Version 6.5
 # Getting Started Instructions
-## 1. To deploy SonarQube using [this pre-built Windows Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker/) in a Service Fabric application with Azure SQL Database
+## 1. To deploy SonarQube using [this pre-built Windows Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker/) in a Service Fabric application with Azure SQL Database. Check [this](https://github.com/GeromeRen/sonarqube/tree/master/windows-docker-external-azureSQL) out for Dockerfile build this image
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube and 
@@ -58,7 +58,7 @@ SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:
                 -e MS_AZURESQL_SERVER_PORT='****' \
                 gerome/sonarqube-azuresql-windows-docker</pre>
                 
-## 3. To deploy SonarQube using [this pre-built Windows Stateless Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker-stateless/) in a Service Fabric application with Azure SQL Database and Azure File
+## 3. To deploy SonarQube using [this pre-built Windows Stateless Docker container image](https://hub.docker.com/r/gerome/sonarqube-azuresql-windows-docker-stateless/) in a Service Fabric application with Azure SQL Database and Azure File. Check [this](https://github.com/GeromeRen/sonarqube/tree/master/windows-docker-external-azureSQL-stateless) out for Dockerfile build this image
 ### Prerequisite
 * <strong>Create Azure Fabric Cluster in Azure</strong> - Select: Windows Data Center with Container <br>
 * <strong>Create Azure SQL Database in Azure</strong> - Make sure to select collation as SQL_Latin1_General_CP1_CS_AS as required by SonarQube
@@ -117,7 +117,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 </Policies>
 ```
 ### Verify SonarQube
-SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube Windows container persistence volume mount at d:\sonarqube on container host machine
+SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube home directory will be entirely hosts in Azure file you created. This allows you to start/restart SonarQube as windows container in any desired node in Service Fabric cluster.
 #  More to Read
 ## 1. To deploy SonarQube as [a pre-built Linux docker container image](https://hub.docker.com/_/sonarqube/) in a Service Fabric application 
 ### Prerequisite
