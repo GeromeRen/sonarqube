@@ -167,6 +167,13 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube Linux container persistence volume mount at /data/sonarqube/*
 
 ## 4. TBD
-
+```
+docker plugin install --alias cloudstor:azure2 \
+  --grant-all-permissions docker4x/cloudstor:17.06.1-ce-azure1  \
+  CLOUD_PLATFORM=AZURE \
+  AZURE_STORAGE_ACCOUNT_KEY="kZaxd8C98Bhjf3HO3YyDJpmBCrP/M5HbO4m/lg0oMqGnYXGBWqtKSNs7O7Rv8kztSgPT05hEbDoMxezFofyUXQ==" \
+  AZURE_STORAGE_ACCOUNT="azurefiledriverac1" \
+  DEBUG=1
+```
 ## 5. To deploy SonarQube as Windows docker container image with internal MySQL Database (in the same container)
 Please reference to: https://github.com/dnikolayev/sonarqube-mysql-windows-docker
