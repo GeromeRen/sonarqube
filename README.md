@@ -1,7 +1,7 @@
 # Overview
 * Container is based on [Microsoft Nanoserver](https://hub.docker.com/r/microsoft/nanoserver/) and [OpenJDK](https://hub.docker.com/_/openjdk/) <br/>
-* Container use Azure SQL Database as external database
-* Stateless Container use Azure SQL Database as external database as well as mount the Azure File share directly within the container using net use.
+* Follow the first instruction to start SonarQube Windows Container using Azure SQL Database as external database
+* Follow the second instruction to start Stateless Container Windows Container using Azure SQL Database as external database as well as mount the Azure File share directly within the container using net use.
 # SonarQube Version
 Version 6.5
 # Getting Started Instructions
