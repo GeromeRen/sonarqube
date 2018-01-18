@@ -4,7 +4,7 @@
 * Follow instruction 2 in below to start stateless SonarQube Windows container using Azure SQL database as external database as well as mount the Azure File share directly within the container using net use.
 * Follow instruction 3 in below to start SonarQube Linux Unbuntu Container using Azure SQL database as external database and persist volume in docker host via Azure File SMB protocol.
 * Follow instruction 4 in below to start stateless SonarQube Linux Ubuntu container using Azure SQL database as external database as well using a volume created with Cloudstor volume driver to mount entire SonarQube home directory as data volume.
-* Follow links in instruction 5 in below to start SonarQube Linux Ubuntu container with inner MySQL database.
+* Follow links in instruction 5 in below to start SonarQube Linux Ubuntu container with inner MySQL database (database in same container in docker host).
 
 # SonarQube Version
 Version 6.5
@@ -233,5 +233,5 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
 ### Verify SonarQube
 SonarQube is running at Fabric endpoint: [http://{Your Fabric Cluster Endpoint}:9000]() and SonarQube home directory /opt/sonarqube will be entirely hosts in Azure file via volume plugin for stateless
 
-## 5. To deploy SonarQube as Windows docker container image with internal MySQL Database (in the same container)
+## 5. To deploy SonarQube as Windows docker container image with internal MySQL Database (database in same container in docker host)
 Please reference to: https://github.com/dnikolayev/sonarqube-mysql-windows-docker
