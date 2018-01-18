@@ -23,8 +23,6 @@ RUN powershell -command \
 
     Rename-Item c:\sonarqube\extensions c:\sonarqube\original_extensions ;
 
-VOLUME c:\\sonarqube
-
 EXPOSE 9000
 
 WORKDIR C:\\sonarqube
