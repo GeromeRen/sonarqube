@@ -33,7 +33,7 @@ Follow https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quic
   <EnvironmentVariables>
       <EnvironmentVariable Name="SONARQUBE_JDBC_USERNAME" Value="****@****"/>
       <EnvironmentVariable Name="SONARQUBE_JDBC_PASSWORD" Value="****"/>
-      <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="****t"/>
+      <EnvironmentVariable Name="MS_AZURESQL_SERVER_NAME" Value="*****"/>
       <EnvironmentVariable Name="MS_AZURESQL_SERVER_PORT" Value="****"/>
   </EnvironmentVariables>
 ```
