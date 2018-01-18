@@ -5,6 +5,10 @@ set _TMP=
 set sdrive=S:
 set ssonarqubedrive=S:\sonarqube
 
+echo "[Debug]SONARQUBE_JDBC_USERNAME is: %SONARQUBE_JDBC_USERNAME%"
+echo "[Debug]SONARQUBE_JDBC_USERNAME is: %SONARQUBE_JDBC_USERNAME"
+
+
 net use S: \\azurefiledriverac1.file.core.windows.net\sonarqube4windows1 /u:AZURE\azurefiledriverac1 kZaxd8C98Bhjf3HO3YyDJpmBCrP/M5HbO4m/lg0oMqGnYXGBWqtKSNs7O7Rv8kztSgPT05hEbDoMxezFofyUXQ==
 for /f "delims=" %%a in ('dir /b "S:\sonarqube\*.*"') do set _TMP=%%a
 echo "Checking Folder: %_folder%"
